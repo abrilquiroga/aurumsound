@@ -57,6 +57,21 @@ const AurumLanding = () => {
     }
   ];
 
+  const productFeatures = [
+    "Sonido Hi-Res 3D",
+    "Cancelación activa de ruido",
+    "48 horas de batería",
+    "Bluetooth 5.3 ultraestable",
+    "Materiales premium dorados",
+    "Garantía de 2 años"
+  ];
+
+  const socialLinks = ['Instagram', 'Facebook', 'Twitter', 'YouTube'];
+
+  const handleTestimonialChange = (index: number) => {
+    setCurrentTestimonial(index);
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-yellow-400 via-yellow-500 to-orange-500 overflow-hidden">
       
@@ -69,7 +84,7 @@ const AurumLanding = () => {
       >
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent transform rotate-12"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent transform rotate-12" />
         </div>
 
         <div className="container mx-auto grid lg:grid-cols-2 gap-12 items-center relative z-10">
@@ -114,6 +129,8 @@ const AurumLanding = () => {
                 className="bg-white text-yellow-600 px-8 py-4 rounded-full font-semibold text-lg hover:shadow-2xl transition-all duration-300 flex items-center justify-center gap-2"
                 whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(255,255,255,0.3)" }}
                 whileTap={{ scale: 0.95 }}
+                type="button"
+                aria-label="Comprar auriculares AURUM"
               >
                 <ShoppingCart className="w-5 h-5" />
                 Comprar Ahora
@@ -123,6 +140,8 @@ const AurumLanding = () => {
                 className="border-2 border-white text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white hover:text-yellow-600 transition-all duration-300 flex items-center justify-center gap-2"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                type="button"
+                aria-label="Ver detalles del producto"
               >
                 <Play className="w-5 h-5" />
                 Ver Detalles
@@ -136,7 +155,7 @@ const AurumLanding = () => {
               transition={{ duration: 1, delay: 1.1 }}
             >
               <div className="flex items-center justify-center lg:justify-start gap-4 text-white">
-                <div className="flex text-yellow-200">
+                <div className="flex text-yellow-200" role="img" aria-label="5 estrellas">
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} className="w-5 h-5 fill-current" />
                   ))}
@@ -168,7 +187,7 @@ const AurumLanding = () => {
                 }}
               />
               
-                <motion.div 
+              <motion.div 
                 className="relative z-10 aspect-square max-w-lg mx-auto"
                 animate={{ 
                   y: [-10, 10, -10],
@@ -179,13 +198,13 @@ const AurumLanding = () => {
                   repeat: Infinity,
                   ease: "easeInOut"
                 }}
-                >
+              >
                 <img 
                   src="/auriculares.png" 
-                  alt="AURUM Sound Headphones" 
+                  alt="AURUM Sound Headphones - Auriculares premium dorados" 
                   className="w-full h-full object-cover rounded-3xl shadow-2xl"
                 />
-                </motion.div>
+              </motion.div>
             </div>
           </motion.div>
         </div>
@@ -195,16 +214,17 @@ const AurumLanding = () => {
           className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
+          aria-hidden="true"
         >
           <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
-            <div className="w-1 h-3 bg-white rounded-full mt-2 animate-pulse"></div>
+            <div className="w-1 h-3 bg-white rounded-full mt-2 animate-pulse" />
           </div>
         </motion.div>
       </motion.section>
 
       {/* Features Section */}
       <section className="py-20 bg-gray-900 relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-yellow-500/10 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-yellow-500/10 to-transparent" />
         
         <div className="container mx-auto px-4 relative z-10">
           <motion.div 
@@ -225,7 +245,7 @@ const AurumLanding = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {features.map((feature, index) => (
               <motion.div
-                key={index}
+                key={feature.title}
                 className="bg-gray-800/50 backdrop-blur-sm p-8 rounded-2xl border border-yellow-400/20 hover:border-yellow-400/50 transition-all duration-300"
                 initial={{ y: 50, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
@@ -285,7 +305,7 @@ const AurumLanding = () => {
             />
 
             {/* Sound Waves Animation */}
-            <div className="flex justify-center items-center gap-2 mb-8">
+            <div className="flex justify-center items-center gap-2 mb-8" role="img" aria-label="Ondas de sonido animadas">
               {[...Array(5)].map((_, i) => (
                 <motion.div
                   key={i}
@@ -332,7 +352,7 @@ const AurumLanding = () => {
                 transition={{ duration: 0.5 }}
               >
                 <div className="text-yellow-400 mb-6">
-                  <div className="flex justify-center">
+                  <div className="flex justify-center" role="img" aria-label="5 estrellas">
                     {[...Array(5)].map((_, i) => (
                       <Star key={i} className="w-8 h-8 fill-current" />
                     ))}
@@ -340,7 +360,7 @@ const AurumLanding = () => {
                 </div>
                 
                 <blockquote className="text-2xl lg:text-3xl text-white font-light mb-8 italic">
-                  "{testimonials[currentTestimonial].text}"
+                  {testimonials[currentTestimonial].text}
                 </blockquote>
                 
                 <div className="text-yellow-400">
@@ -362,7 +382,9 @@ const AurumLanding = () => {
                   className={`w-3 h-3 rounded-full transition-all duration-300 ${
                     index === currentTestimonial ? 'bg-yellow-400' : 'bg-gray-600'
                   }`}
-                  onClick={() => setCurrentTestimonial(index)}
+                  onClick={() => handleTestimonialChange(index)}
+                  type="button"
+                  aria-label={`Ver testimonio ${index + 1}`}
                 />
               ))}
             </div>
@@ -395,15 +417,8 @@ const AurumLanding = () => {
               </div>
 
               <ul className="text-left space-y-3 mb-8 max-w-md mx-auto">
-                {[
-                  "Sonido Hi-Res 3D",
-                  "Cancelación activa de ruido",
-                  "48 horas de batería",
-                  "Bluetooth 5.3 ultraestable",
-                  "Materiales premium dorados",
-                  "Garantía de 2 años"
-                ].map((feature, index) => (
-                  <li key={index} className="flex items-center gap-3 text-gray-700">
+                {productFeatures.map((feature, index) => (
+                  <li key={feature} className="flex items-center gap-3 text-gray-700">
                     <Check className="w-5 h-5 text-green-500 flex-shrink-0" />
                     {feature}
                   </li>
@@ -414,6 +429,8 @@ const AurumLanding = () => {
                 className="bg-gradient-to-r from-yellow-500 to-orange-500 text-white px-12 py-4 rounded-full font-bold text-xl hover:shadow-2xl transition-all duration-300 w-full sm:w-auto"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                type="button"
+                aria-label="Añadir AURUM ProSound al carrito"
               >
                 <ShoppingCart className="w-6 h-6 inline mr-2" />
                 Añadir al carrito
@@ -445,11 +462,12 @@ const AurumLanding = () => {
               </p>
               
               <div className="flex justify-center space-x-6 mb-8">
-                {['Instagram', 'Facebook', 'Twitter', 'YouTube'].map((social) => (
+                {socialLinks.map((social) => (
                   <a 
                     key={social}
                     href="#" 
                     className="text-gray-400 hover:text-yellow-400 transition-colors duration-300"
+                    aria-label={`Síguenos en ${social}`}
                   >
                     {social}
                   </a>
