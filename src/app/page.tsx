@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -293,7 +294,7 @@ const AurumLanding = () => {
             viewport={{ once: true }}
           >
             <h2 className="text-5xl lg:text-6xl font-bold text-transparent bg-gradient-to-r from-yellow-400 to-yellow-200 bg-clip-text mb-8 font-['Playfair_Display']">
-              "Cuando el arte del diseño se une con el alma del sonido"
+              &quot;Cuando el arte del diseño se une con el alma del sonido&quot;
             </h2>
             
             <motion.div 
@@ -417,7 +418,7 @@ const AurumLanding = () => {
               </div>
 
               <ul className="text-left space-y-3 mb-8 max-w-md mx-auto">
-                {productFeatures.map((feature, index) => (
+                {productFeatures.map((feature) => (
                   <li key={feature} className="flex items-center gap-3 text-gray-700">
                     <Check className="w-5 h-5 text-green-500 flex-shrink-0" />
                     {feature}
